@@ -1,0 +1,107 @@
+# Playbill — Video Program Definition
+#
+# Each [[segment]] is rendered in order and concatenated into the final video.
+#
+# Segment types:
+#   title    — text card (white on black, fade in/out)
+#   intro    — portrait video (left) + text overlay (right)
+#   episode  — pass-through video file, scaled/padded to output resolution
+#   scene    — pass-through video clip (same as episode, semantic distinction)
+#   quote    — photo or video (left) + quote text (right)
+#   credits  — scrolling photos, friend quotes, background music with ducking
+#
+# Optional: segments can have an `act` field (integer) to produce per-act
+# output files in addition to the combined output.
+#
+# Output files:
+#   output/playbill.mp4           — full concatenated program
+#   output/act1.mp4, act2.mp4     — per-act files (if acts are defined)
+#   output/playbill_preview.mp4   — preview mode (--preview)
+
+[output]
+width = 1920
+height = 1080
+fps = 30
+transition_duration = 1.0
+# title_music = "input/music/background.mp3"
+# title_music_volume = "-22dB"
+
+# --- Example: Opening title card ---
+
+[[segment]]
+type = "title"
+lines = [
+    "Your Event Title",
+    "A Subtitle",
+]
+duration = 6.0
+fade_in = 2.0
+fade_out = 2.0
+
+# --- Example: Intro with presenter video ---
+#
+# [[segment]]
+# type = "intro"
+# video = "input/intros/presenter.mov"
+# title = "First Segment"
+# subtitle = "Episode Name"
+# description = "A short description shown beside the video."
+
+# --- Example: Episode pass-through ---
+#
+# [[segment]]
+# type = "episode"
+# file = "input/episodes/episode-1.mkv"
+# trim_end = 420.0
+# outro_duration = 3.0
+
+# --- Example: Scene clip ---
+#
+# [[segment]]
+# type = "scene"
+# file = "input/scenes/highlight.mkv"
+
+# --- Example: Quote with photo ---
+#
+# [[segment]]
+# type = "quote"
+# photo = "input/friends/person.jpg"
+# name = "Person Name"
+# quote = "Something memorable they said."
+# duration = 10.0
+
+# --- Example: Quote with video ---
+#
+# [[segment]]
+# type = "quote"
+# video = "input/friends/person.mov"
+# name = "Person Name"
+# quote = "Something memorable they said."
+
+# --- Example: Credits segment ---
+#
+# [[segment]]
+# type = "credits"
+# music = "input/music/credits.mp3"
+# # music_content_end = 243.0    # optional: auto-detected if omitted
+# thanks_lines = ["Thank You"]
+# thanks_duration = 8.0
+# closing_lines = ["The End"]
+# closing_duration = 8.0
+# photo_dir = "input/photos"
+# photo_count = 35
+# photo_duration = 3.0
+# # thanks_video = "input/intros/thanks.mov"
+#
+# [[segment.quotes]]
+# type = "video"
+# file = "input/friends/person.mov"
+# name = "Person Name"
+# quote = ""
+#
+# [[segment.quotes]]
+# type = "photo"
+# file = "input/friends/person.jpg"
+# name = "Person Name"
+# quote = "Something they said."
+# duration = 10.0

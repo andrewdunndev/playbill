@@ -1,0 +1,14 @@
+# Generated output
+output/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# macOS
+.DS_Store
+
+# Input assets (user-provided, not tracked)
+input/
