@@ -91,6 +91,10 @@ python assemble.py --list           # List segments and exit
 - ffmpeg 7+
 - `pip install numpy Pillow`
 
+## Development
+
+This project is developed on [GitLab](https://gitlab.com/dunn.dev/playbill), where issues, merge requests, and CI/CD live. It's mirrored to [GitHub](https://github.com/andrewdunndev/playbill) for discoverability — if you're solving a similar problem or want to discuss approaches, please reach out!
+
 ## License
 
 MIT
